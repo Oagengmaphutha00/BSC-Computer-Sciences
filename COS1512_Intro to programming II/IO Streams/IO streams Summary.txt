@@ -1,0 +1,47 @@
+Summary of File I/O Statements
+In this sample the input comes from a file with the directory name infile.
+dat, and the output goes to a file with the directory name outfile.dat.
+Place the following include directives in your program file:
+#include <fstream> 
+#include <iostream> 
+#include <cstdlib>   
+■
+For file I/O
+For cout
+For exit
+■ Choose a stream name for the input stream (for example, inStream), 
+and declare it to be a variable of type ifstream. Choose a stream 
+name for the output file (for example, outStream), and declare it to 
+be of type ofstream:
+using namespace std;  
+ifstream inStream;
+ofstream outStream;
+■
+■ Connect each stream to a file using the member function open with 
+the external file name as an argument. Remember to use the member 
+function fail to test that the call to open was successful:
+inStream.open("infile.dat");  
+if (inStream.fail( ))
+{
+    cout << "Input file opening failed.\n";  
+exit(1);
+}
+outStream.open("outfile.dat");  
+if (outStream.fail( ))
+{
+    cout << "Output file opening failed.\n";  
+exit(1);
+}
+■
+■ Use the stream inStream to get input from the file infile.dat just 
+like you use cin to get input from the keyboard. For example:
+inStream >> someVariable >> someOtherVariable;
+■
+■ Use the stream outStream to send output to the file outfile.dat just 
+like you use cout to send output to the screen. For example:
+outStream << "someVariable = "
+          << someVariable << endl;
+■
+■ Close the streams using the function close:
+inStream.close( );
+outStream.close( );
